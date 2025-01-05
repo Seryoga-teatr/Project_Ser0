@@ -1,9 +1,8 @@
-from .masks import get_mask_account, get_mask_card_number
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(name_of_card: str) -> str:
     '''Маскировка названия карты или счета'''
-    mask_of_name = ''
     list_in_func = name_of_card.split(' ')
     if list_in_func[0] == 'Счет':
         list_in_func[-1] = get_mask_account(int(list_in_func[-1]))
@@ -14,8 +13,8 @@ def mask_account_card(name_of_card: str) -> str:
 
 def get_date(date_time_str: str) -> str:
     '''Вывод даты в формате: ДД.ММ.ГГГГ'''
-    #"2024-03-11T02:26:18.671407" --- "11.03.2024"
     return date_time_str[8:10] + '.' + date_time_str[5:7] + '.' + date_time_str[0:4]
+
 
 if __name__ == "__main__":
     print(mask_account_card('Visa Gold 5999414228426353'))
